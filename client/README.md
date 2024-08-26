@@ -12,13 +12,13 @@ Nirvana is a full-stack e-commerce shopping store web application. This reposito
 ## Screenshots
 
 This is the landing page of the UI
-![Home Page](./client/public/img/home.png)
+![Home Page](public/img/home.png)
 
 This is the products page of the UI were user can apply filters and customise his/her search
-![Products Page](./client/public/img/products.png)
+![Products Page](public/img/products.png)
 
 This is the page for displaying the information of a particular product 
-![Cart Page](./client/public/img/product.png)
+![Cart Page](public/img/product.png)
 
 
 
