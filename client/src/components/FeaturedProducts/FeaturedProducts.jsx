@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import "./FeaturedProducts.scss";
 import useFetch from "../../hooks/useFetch";
+import axios from "axios";
 
 const FeaturedProducts = ({ type }) => {
   // const { data, loading, error } = useFetch(
@@ -13,32 +14,50 @@ const FeaturedProducts = ({ type }) => {
       img: "https://images.pexels.com/photos/1972115/pexels-photo-1972115.jpeg?auto=compress&cs=tinysrgb&w=1600",
       img2: "https://images.pexels.com/photos/1163194/pexels-photo-1163194.jpeg?auto=compress&cs=tinysrgb&w=1600",
       title: "Long Sleeve Graphic T-shirt",
-      isNew:true,
-      oldPrice:19,
-      price:12
+      isNew: true,
+      oldPrice: 19,
+      price: 12,
     },
     {
       id: 2,
       img: "https://images.pexels.com/photos/1759622/pexels-photo-1759622.jpeg?auto=compress&cs=tinysrgb&w=1600",
       title: "Coat",
-      oldPrice:19,
-      price:12
+      oldPrice: 19,
+      price: 12,
     },
     {
       id: 3,
       img: "https://images.pexels.com/photos/1457983/pexels-photo-1457983.jpeg?auto=compress&cs=tinysrgb&w=1600",
       title: "Coat",
-      oldPrice:19,
-      price:12
+      oldPrice: 19,
+      price: 12,
     },
     {
       id: 4,
       img: "https://images.pexels.com/photos/2065200/pexels-photo-2065200.jpeg?auto=compress&cs=tinysrgb&w=1600",
       title: "Hat",
-      oldPrice:19,
-      price:12
+      oldPrice: 19,
+      price: 12,
     },
   ];
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await axios.get(
+          process.env.REACT_APP_API_URL + "/products",
+          {
+            Authorization: "bearer" + process.env.REACT_APP_API_TOKEN,
+          }
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className="featuredProducts">
@@ -53,7 +72,9 @@ const FeaturedProducts = ({ type }) => {
         </p>
       </div>
       <div className="bottom">
-        { data?.map((item) => <Card item={item} key={item.id} />)}
+        {data?.map((item) => (
+          <Card item={item} key={item.id} />
+        ))}
       </div>
     </div>
   );
