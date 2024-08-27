@@ -22,10 +22,5 @@ This is the page for displaying the information of a particular product
 
 
 
-## Backend Repository
-
-The backend code for this project is available in a separate repository. You can find it [here](https://github.com/ananya-gta/api).
-
-
 
 
